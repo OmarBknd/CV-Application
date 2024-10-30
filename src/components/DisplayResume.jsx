@@ -10,10 +10,10 @@ export default function DisplayResume({ educationList}){
         
        
             <div key={index}>
-          <p> school {edu.school}</p>
-          <p> degree {edu.degree}</p>
-          <p>Start Date: {edu.startDate}</p>
-                   <p>End Date: {edu.endDate}</p>
+          <p>  {edu.school}</p>
+          <p>  {edu.degree}</p>
+          <p> {edu.startDate}</p>
+                   <p> {edu.endDate}</p>
                    </div>
        
     ))}

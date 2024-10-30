@@ -43,6 +43,10 @@ function handleSave(){
   }
  
 }
+function handleCancel(){
+  setEducationList(educationList.filter((_,i)=> i !==''))
+  setEducationEditIndex(null)
+}
 function handleDelete(index){
   setEducationList(educationList.filter((_,i)=>i !== index))
   setEducationEditIndex(null)
@@ -53,6 +57,7 @@ function handleEdit(index){
 }
   return (
     <>
+    <div className='container'>
     <div>
   <h2>Education</h2>
   <div>
@@ -70,6 +75,7 @@ function handleEdit(index){
         education={education} 
         onChange={handleChange}
         handleSave={handleSave}
+        handleCancel={handleCancel}
         handleDelete={() => handleDelete(educationEditIndex)}
       />
     )}
@@ -83,6 +89,7 @@ function handleEdit(index){
     <DisplayResume
    
     educationList={educationList}/>
+    </div>
     </>
     
   )

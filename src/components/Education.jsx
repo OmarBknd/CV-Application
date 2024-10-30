@@ -3,6 +3,7 @@ export default function Education(
     {education,
          onChange,
           handleSave,
+          handleCancel,
           handleDelete,
         }){
 
@@ -34,6 +35,7 @@ export default function Education(
             value={education.endDate}
             onChange={onChange} />
             <button onClick={handleSave}>save</button>
+            <button onClick={handleCancel}>Cancel</button>
             <button onClick={handleDelete}>Delete</button>
         </div>
     )
