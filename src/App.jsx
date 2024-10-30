@@ -1,109 +1,113 @@
-import { useState } from 'react'
-import './App.css'
-import DisplayResume from './components/DisplayResume'
-import Education from './components/Education'
+import { useState } from "react";
+import "./App.css";
+import DisplayResume from "./components/DisplayResume";
+import PersonalInfo from "./components/PersonalInfo";
+import Education from "./components/Education";
 function App() {
+  const [personalInfo, setPersonalInfo] = useState({
+    name: "",
+  });
   const [education, setEducation] = useState({
-    school:'',
-    degree:'',
-    startDate:'',
-    endDate:'',
-  })
-  const [educationList, setEducationList] = useState([])
-  const [educationEditIndex, setEducationEditIndex] = useState(null)
-function handleChange(e){
-  const {name, value} = e.target
-  setEducation({
-    ...education,
-    [name]: value
-  })
-}
-
-
-function addNewEducation(){
- 
-  const addNew = { 
-    school:'',
-    degree:'',
-    startDate:'',
-    endDate:'',}
-
-   setEducationList((prevList) => [...prevList,addNew])
-   setEducationEditIndex(educationList.length)
-   setEducation({
-    school:'',
-    degree:'',
-    startDate:'',
-    endDate:'',
-  })
-}
-
-function handleSave(){
-  if(educationEditIndex !== null){
-    const updateEducationList = [...educationList];
-    updateEducationList[educationEditIndex] = education;
-    setEducationList(updateEducationList);
-    setEducationEditIndex(null)
-  }else{
-    setEducationList([...educationList, education])
+    school: "",
+    degree: "",
+    startDate: "",
+    endDate: "",
+  });
+  const [educationList, setEducationList] = useState([]);
+  const [educationEditIndex, setEducationEditIndex] = useState(null);
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setEducation({
+      ...education,
+      [name]: value,
+    });
+    setPersonalInfo({
+      [name]: value,
+    });
   }
- 
-}
-function handleCancel(){
-  setEducationList(educationList.filter((_,i)=> i !==''))
-  setEducationEditIndex(null)
-}
-function handleDelete(index){
-  setEducationList(educationList.filter((_,i)=>i !== index))
-  setEducationEditIndex(null)
-}
-function handleEdit(index){
-  setEducation(educationList[index])
-  setEducationEditIndex(index)
-}
+
+  function addNewEducation() {
+    const addNew = {
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+    };
+
+    setEducationList((prevList) => [...prevList, addNew]);
+    setEducationEditIndex(educationList.length);
+    setEducation({
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+    });
+  }
+
+  function handleSave() {
+    if (educationEditIndex !== null) {
+      const updateEducationList = [...educationList];
+      updateEducationList[educationEditIndex] = education;
+      setEducationList(updateEducationList);
+      setEducationEditIndex(null);
+    } else {
+      setEducationList([...educationList, education]);
+    }
+  }
+  function handleCancel() {
+    setEducationList(educationList.filter((_, i) => i !== ""));
+    setEducationEditIndex(null);
+  }
+  function handleDelete(index) {
+    setEducationList(educationList.filter((_, i) => i !== index));
+    setEducationEditIndex(null);
+  }
+  function handleEdit(index) {
+    setEducation(educationList[index]);
+    setEducationEditIndex(index);
+  }
   return (
     <>
-    <div className='container'>
-    <div>
-  <h2>Education</h2>
-  <div>
-    {educationEditIndex === null ? (
-      <div>
-        {educationList.map((school, index) => (
-          <div key={index} name={index} onClick={() => handleEdit(index)}>
-            <h2>{school.school}</h2>
+      <div className="container">
+        <PersonalInfo personalInfo={personalInfo} onChange={handleChange} />
+        <div>
+          <h2>Education</h2>
+          <div>
+            {educationEditIndex === null ? (
+              <div>
+                {educationList.map((school, index) => (
+                  <div
+                    key={index}
+                    name={index}
+                    onClick={() => handleEdit(index)}
+                  >
+                    <h2>{school.school}</h2>
+                  </div>
+                ))}
+                <button onClick={addNewEducation}>Add</button>
+              </div>
+            ) : (
+              <Education
+                education={education}
+                onChange={handleChange}
+                handleSave={handleSave}
+                handleCancel={handleCancel}
+                handleDelete={() => handleDelete(educationEditIndex)}
+              />
+            )}
           </div>
-        ))}
-        <button onClick={addNewEducation}>Add</button>
-      </div>
-    ) : (
-      <Education 
-        education={education} 
-        onChange={handleChange}
-        handleSave={handleSave}
-        handleCancel={handleCancel}
-        handleDelete={() => handleDelete(educationEditIndex)}
-      />
-    )}
-  </div>
-</div>
+        </div>
 
-    
-   
-    
-    
-    <DisplayResume
-   
-    educationList={educationList}/>
-    </div>
+        <DisplayResume
+          personalInfo={personalInfo}
+          educationList={educationList}
+        />
+      </div>
     </>
-    
-  )
- 
-  
+  );
 }
 
-export default App
+export default App;
 //<div>
 //<a href="https://vite.dev" target="_blank">
 //  <img src={viteLogo} className="logo" alt="Vite logo" />
