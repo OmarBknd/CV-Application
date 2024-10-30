@@ -18,7 +18,7 @@ function handleChange(e){
     [name]: value
   })
 }
-console.log(education);
+
 
 function addNewEducation(){
  
@@ -30,6 +30,12 @@ function addNewEducation(){
 
    setEducationList((prevList) => [...prevList,addNew])
    setEducationEditIndex(educationList.length)
+   setEducation({
+    school:'',
+    degree:'',
+    startDate:'',
+    endDate:'',
+  })
 }
 
 function handleSave(){
