@@ -1,0 +1,36 @@
+hr {
+    border: 1px solid;
+    border-radius: 5px;
+    
+     
+     
+     margin: 0 20px 0 20px
+ 
+ }
+ .general-info{
+   
+     display: flex;
+     flex-direction: column;
+    
+ 
+ }
+ .educational-experience{
+     display: flex;
+     flex-direction: column;
+ }
+ .container{
+     display: flex;
+  
+  
+ }
+ .display-cv{
+     width: 500px;
+     height: 800px;
+     background-color: aliceblue ;
+     color: black;
+ }
+ .g{
+     display: flex;
+     justify-content: space-around;
+     height: 70px;
+ }
