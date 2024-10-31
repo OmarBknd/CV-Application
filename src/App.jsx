@@ -3,9 +3,12 @@ import "./App.css";
 import DisplayResume from "./components/DisplayResume";
 import PersonalInfo from "./components/PersonalInfo";
 import Education from "./components/Education";
+import Experience from "./components/Experience";
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
     name: "",
+    email:"",
+    phoneNumber:'',
   });
   const [education, setEducation] = useState({
     school: "",
@@ -13,6 +16,15 @@ function App() {
     startDate: "",
     endDate: "",
   });
+  const [experience, setExperience] = useState({
+    company: "",
+    position: "",
+    startDate: "",
+    endDate: "",
+    jobDescription: "",
+  })
+  const [experienceList, setExperienceList] = useState([]);
+  const [experienceEditIndex, setExperienceEditIndex] = useState(null);
   const [educationList, setEducationList] = useState([]);
   const [educationEditIndex, setEducationEditIndex] = useState(null);
   function handleChange(e) {
@@ -22,8 +34,13 @@ function App() {
       [name]: value,
     });
     setPersonalInfo({
+      ...personalInfo,
       [name]: value,
     });
+    setExperience({
+      ...experience,
+      [name]: value,
+    })
   }
 
   function addNewEducation() {
@@ -44,6 +61,49 @@ function App() {
     });
   }
 
+  function addNewExperience() {
+    const addNew = {
+      company: "",
+      position: "",
+      startDate: "",
+      endDate: "",
+      jobDescription: "",
+    };
+
+    setExperienceList((prevList) => [...prevList, addNew]);
+    setExperienceEditIndex(experienceList.length);
+    setExperience({
+      company: "",
+      position: "",
+      startDate: "",
+      endDate: "",
+      jobDescription: "",
+    });
+  }
+  function handleExperienceSave() {
+    if(experienceEditIndex !== null){
+      const updateExperienceList = [...experienceList];
+      updateExperienceList[experienceEditIndex] = experience;
+      setExperienceList(updateExperienceList);
+      setExperienceEditIndex(null);
+  }
+  else{
+    setExperienceList([...experienceList, experience]);
+  }
+}
+function handleExperienceCancel(){
+  setExperienceList(experienceList.filter((_, i) => i !== ""));
+  setExperienceEditIndex(null)
+}
+
+function handleExperienceDelete(index){
+  setExperienceList(experienceList.filter((_, i) => i !== index));
+  setExperienceEditIndex(null);
+}
+function handleExperienceEdit(index){
+  setExperience(experienceList[index]);
+  setExperienceEditIndex(index);
+}
   function handleSave() {
     if (educationEditIndex !== null) {
       const updateEducationList = [...educationList];
@@ -69,10 +129,16 @@ function App() {
   return (
     <>
       <div className="container">
-        <PersonalInfo personalInfo={personalInfo} onChange={handleChange} />
         <div>
-          <h2>Education</h2>
+        <div>
+        <h2>Personal information</h2>
+        <PersonalInfo personalInfo={personalInfo} onChange={handleChange} />
+        
+        </div>
+      <div>
+          
           <div>
+          <h2>Education</h2>
             {educationEditIndex === null ? (
               <div>
                 {educationList.map((school, index) => (
@@ -96,11 +162,37 @@ function App() {
               />
             )}
           </div>
+          <div>
+            <h2>Experience</h2>
+            {experienceEditIndex === null ? ( 
+              <div>
+                {experienceList.map((company, index) => (
+                  <div
+                    key={index}
+                    name={index}
+                    onClick={() => handleExperienceEdit(index)}
+                  >
+                    <h2>{company.company}</h2>
+                  </div>
+                ))}
+                <button onClick={addNewExperience}>Add</button>
+              </div>
+            ) : (
+              <Experience
+                experience={experience}
+                onChange={handleChange}
+                handleSave={handleExperienceSave}
+                handleCancel={handleExperienceCancel}
+                handleDelete={() => handleExperienceDelete(experienceEditIndex)}
+              />
+            )}
+          </div>
         </div>
-
+        </div>
         <DisplayResume
           personalInfo={personalInfo}
           educationList={educationList}
+          experienceList={experienceList}
         />
       </div>
     </>
