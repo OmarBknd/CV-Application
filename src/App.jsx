@@ -4,12 +4,9 @@ import DisplayResume from "./components/DisplayResume";
 import PersonalInfo from "./components/PersonalInfo";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
+import data from './components/data.json'
 function App() {
-  const [personalInfo, setPersonalInfo] = useState({
-    name: "",
-    email:"",
-    phoneNumber:'',
-  });
+  const [personalInfo, setPersonalInfo] = useState(data.person);
   const [education, setEducation] = useState({
     school: "",
     degree: "",
@@ -23,9 +20,9 @@ function App() {
     endDate: "",
     jobDescription: "",
   })
-  const [experienceList, setExperienceList] = useState([]);
+  const [experienceList, setExperienceList] = useState(data.experience);
   const [experienceEditIndex, setExperienceEditIndex] = useState(null);
-  const [educationList, setEducationList] = useState([]);
+  const [educationList, setEducationList] = useState(data.education);
   const [educationEditIndex, setEducationEditIndex] = useState(null);
   function handleChange(e) {
     const { name, value } = e.target;
@@ -47,6 +44,7 @@ function App() {
     const addNew = {
       school: "",
       degree: "",
+      location:'',
       startDate: "",
       endDate: "",
     };
@@ -56,6 +54,7 @@ function App() {
     setEducation({
       school: "",
       degree: "",
+      location:'',
       startDate: "",
       endDate: "",
     });
@@ -65,6 +64,7 @@ function App() {
     const addNew = {
       company: "",
       position: "",
+      location:'',
       startDate: "",
       endDate: "",
       jobDescription: "",
@@ -75,6 +75,7 @@ function App() {
     setExperience({
       company: "",
       position: "",
+      location:'',
       startDate: "",
       endDate: "",
       jobDescription: "",
@@ -189,11 +190,13 @@ function handleExperienceEdit(index){
           </div>
         </div>
         </div>
+        <div>
         <DisplayResume
           personalInfo={personalInfo}
           educationList={educationList}
           experienceList={experienceList}
         />
+        </div>
       </div>
     </>
   );

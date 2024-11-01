@@ -7,7 +7,7 @@ export default function Education(
           handleDelete,
         }){
 
-
+            
     return(
         <div  className="educational-experience">
             school:
@@ -22,11 +22,16 @@ export default function Education(
             name="degree"
             value={education.degree}
             onChange={onChange} />
-            start date
+             <input 
+            type="text"
+            name="degree"
+            value={education.degree}
+            onChange={onChange} />
+            location
             <input 
             type="text"
-            name="startDate"
-            value={education.startDate}
+            name="location"
+            value={education.location}
             onChange={onChange} />
             end date
             <input 

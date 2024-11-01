@@ -22,6 +22,12 @@ export default function Experience(
             name="position"
             value={experience.position}
             onChange={onChange} />
+            location:
+            <input 
+            type="text"
+            name="location"
+            value={experience.location}
+            onChange={onChange} />
             start date
             <input 
             type="text"
