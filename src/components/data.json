@@ -1,0 +1,59 @@
+    {
+    "person" : 
+        { 
+        "name": "JOHN SMITH L. DOE",
+        "email": "johndoe@example.com",
+        "phoneNumber": "(+1) 987 6543 210 ",
+        "location": " New York, United States of America"
+        
+        }
+    ,
+   
+    "education": [
+      {
+        "school": "Open University",
+        "degree": "Bachelor of Science in Computer Science",
+        "location":"Pasadena, California",
+        "startDate": "2015",
+        "endDate": "2018"
+      },
+      {
+        "school": "North Carolina",
+        "degree": "Bachelors",
+        "location":"Pasadena, California",
+        "startDate": "2012",
+        "endDate": "2015"
+      }
+    ],
+    "experience": [
+      {
+        "company": "National Aeronautics and Space Administration - Jet Propulsion Laboratory",
+        "position": "Senior Developer",
+        "startDate": "Feb 2016 ",
+        "endDate": "May 2019",
+        "location": "Pasadena, California",
+        "jobDescription":[ 
+          " Developed new web and mobile applications that have been deployed across multiple platforms",
+         "Responsible for the design and maintenance of the company's website",
+          "including marketing site, promotional site, blog, sales site and customer service site",
+          "Repaired and maintained all company websites in a timely manner"
+      ]
+          },
+      {
+        "company": "Cloud Code",
+        "position": "Front End Developer",
+        "startDate": "October 2019",
+        "endDate": "Present",
+        "location": " Chicago, Illinois",
+        "jobDescription":[ 
+          "Implemented new website features including conditional logic",
+           "data filters and pricing models",
+           "Improved our global search engine ranking by +200 by implementing Google’s Page Speed toolkit",
+           " Increased revenue through upsells and cross-selling,Improved customer satisfaction score by +24% (based on performance metrics) "
+      ]
+      }
+    ]
+  }
+
+
+  
