@@ -1,36 +1,86 @@
+:root{
+    font-family: 'Times New Roman', Times, serif;
+}
+#root{
+    width: 100%;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    
+ 
+ 
+}
 hr {
     border: 1px solid;
     border-radius: 5px;
-    
-     
-     
-     margin: 0 20px 0 20px
+    margin: -1rem 0 -1rem 0;
+ 
  
  }
- .general-info{
+ .display-personal-info h2 {
+    display: flex;
+    justify-content: flex-start;
+    
+ }
+ .display-personal-info div{
+    margin: -1rem 0 -1.5rem 0;
+    display: flex;
+    gap: 10px;
+    
+ 
+ }
+.display-experience h3 {
+    display: flex;
+}
+.display-experience ul{
+   display: flex;
+   flex-direction: column;
+   text-align: left;
    
-     display: flex;
-     flex-direction: column;
     
- 
+}
+ .display-experience div:nth-child(-n+2) , .display-education div:nth-child(-n+2) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   margin: -1rem 0 -1.5rem 0;
  }
+.display-experience div:nth-child(2) , .display-education div:nth-child(2){
+    font-style: italic;
+    font-size: 0.9rem;
+    margin: -2rem 0 -1.5rem 0
+}
+ .display-education h3{ 
+    display: flex;
+ }
+ 
  .educational-experience{
      display: flex;
      flex-direction: column;
  }
- .container{
-     display: flex;
-  
-  
- }
+
  .display-cv{
-     width: 500px;
-     height: 800px;
+     width: 650px;
+     height: 900px;
      background-color: aliceblue ;
      color: black;
+     padding: 1rem 2rem 0 2rem;
+    
  }
- .g{
-     display: flex;
-     justify-content: space-around;
-     height: 70px;
- }
+.personal-info-form{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+
+.education-form{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+.experience-form{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
