@@ -5,6 +5,9 @@ export default function Experience(
           handleSave,
           handleCancel,
           handleDelete,
+          addJobDescription,
+          updateJobDescription,
+          deleteJobDescription
         }){
 
 
@@ -41,7 +44,19 @@ export default function Experience(
             value={experience.endDate}
             onChange={onChange} />
             job description
-            <input 
+            {experience.jobDescription.map((task,i)=>(
+                <div key={i}>
+                    <textarea 
+                    type="text" 
+                    value={task}
+                    onChange={(e)=>updateJobDescription(e,i)}
+                    >
+                    </textarea>
+                    <button onClick={()=>deleteJobDescription(i)}>Delete job description</button>
+                </div>
+            ))}
+            <button onClick={addJobDescription}>add description</button>
+            <textarea 
             type="text"
             name="jobDescription"
             value={experience.jobDescription}

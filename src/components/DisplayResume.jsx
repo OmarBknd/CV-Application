@@ -3,7 +3,7 @@ export default function DisplayResume({
   experienceList,
   personalInfo,
 }) {
-  console.log("resume", educationList);
+
 
   return (
     <>
@@ -33,7 +33,9 @@ export default function DisplayResume({
                 </p>
               </div>
               <div>
-                <p>{exp.jobDescription}</p>
+                <ul>{exp.jobDescription.map((task,i)=>(
+                  <li key={i}>{task}</li>
+                ))}</ul>
               </div>
             </div>
           ))}

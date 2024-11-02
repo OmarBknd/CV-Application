@@ -18,27 +18,59 @@ function App() {
     position: "",
     startDate: "",
     endDate: "",
-    jobDescription: "",
+    jobDescription: [],
   })
-  const [experienceList, setExperienceList] = useState(data.experience);
+  const [experienceList, setExperienceList] = useState(data.experience );
   const [experienceEditIndex, setExperienceEditIndex] = useState(null);
   const [educationList, setEducationList] = useState(data.education);
   const [educationEditIndex, setEducationEditIndex] = useState(null);
-  function handleChange(e) {
+  function handlePersonalInfoChange(e) {
+    const { name, value } = e.target;
+   
+    setPersonalInfo({
+      ...personalInfo,
+      [name]: value,
+    });
+   
+  }
+  function handleEducationChange(e){
     const { name, value } = e.target;
     setEducation({
       ...education,
       [name]: value,
     });
-    setPersonalInfo({
-      ...personalInfo,
-      [name]: value,
-    });
+  }
+  function handleExperienceChange(e){
+    const { name, value } = e.target;
     setExperience({
       ...experience,
       [name]: value,
     })
   }
+// hnadle the job description list
+  function addJobDescription(){
+    
+    setExperience({
+      ...experience,
+      jobDescription:[...experience.jobDescription,'']
+    })
+  }
+  function updateJobDescription(e,index){
+    const updateDescription = [...experience.jobDescription];
+    updateDescription[index] = e.target.value;
+    setExperience({
+      ...experience,
+      jobDescription:updateDescription
+    })
+
+  }
+  function deleteJobDescription(index) {
+    const updateJobDescriptions = experience.jobDescription.filter((_, i) => i !== index);
+    setExperience({
+        ...experience,
+        jobDescription: updateJobDescriptions,
+    });
+}
 
   function addNewEducation() {
     const addNew = {
@@ -67,7 +99,7 @@ function App() {
       location:'',
       startDate: "",
       endDate: "",
-      jobDescription: "",
+      jobDescription: [],
     };
 
     setExperienceList((prevList) => [...prevList, addNew]);
@@ -78,7 +110,7 @@ function App() {
       location:'',
       startDate: "",
       endDate: "",
-      jobDescription: "",
+      jobDescription: [],
     });
   }
   function handleExperienceSave() {
@@ -91,9 +123,24 @@ function App() {
   else{
     setExperienceList([...experienceList, experience]);
   }
+  setExperience({
+    company: "",
+    position: "",
+    location: "",
+    startDate: "",
+    endDate: "",
+    jobDescription: [],
+});
 }
 function handleExperienceCancel(){
-  setExperienceList(experienceList.filter((_, i) => i !== ""));
+  setExperience({
+    company: "",
+    position: "",
+    location: "",
+    startDate: "",
+    endDate: "",
+    jobDescription: [],
+});
   setExperienceEditIndex(null)
 }
 
@@ -133,7 +180,7 @@ function handleExperienceEdit(index){
         <div>
         <div>
         <h2>Personal information</h2>
-        <PersonalInfo personalInfo={personalInfo} onChange={handleChange} />
+        <PersonalInfo personalInfo={personalInfo} onChange={handlePersonalInfoChange} />
         
         </div>
       <div>
@@ -156,7 +203,7 @@ function handleExperienceEdit(index){
             ) : (
               <Education
                 education={education}
-                onChange={handleChange}
+                onChange={handleEducationChange}
                 handleSave={handleSave}
                 handleCancel={handleCancel}
                 handleDelete={() => handleDelete(educationEditIndex)}
@@ -181,10 +228,13 @@ function handleExperienceEdit(index){
             ) : (
               <Experience
                 experience={experience}
-                onChange={handleChange}
+                onChange={handleExperienceChange}
                 handleSave={handleExperienceSave}
                 handleCancel={handleExperienceCancel}
                 handleDelete={() => handleExperienceDelete(experienceEditIndex)}
+                addJobDescription={addJobDescription}
+                updateJobDescription={updateJobDescription}
+                deleteJobDescription={deleteJobDescription}
               />
             )}
           </div>
