@@ -30,9 +30,7 @@ hr {
     
  
  }
-.display-experience h3 {
-    display: flex;
-}
+
 .display-experience ul{
    display: flex;
    flex-direction: column;
@@ -51,36 +49,84 @@ hr {
     font-size: 0.9rem;
     margin: -2rem 0 -1.5rem 0
 }
- .display-education h3{ 
+ .display-education h3, .display-experience h3{ 
     display: flex;
  }
  
- .educational-experience{
-     display: flex;
-     flex-direction: column;
- }
+
 
  .display-cv{
      width: 650px;
      height: 900px;
-     background-color: aliceblue ;
-     color: black;
+     background-color: #425361 ;
+     color: #ffffff;
      padding: 1rem 2rem 0 2rem;
+     border-radius: .5rem;
     
  }
-.personal-info-form{
+ .form-container{
     display: flex;
     flex-direction: column;
-    width: 350px;
+    justify-content: space-around;
+    width: 450px;
+    
+    
+ }
+ .form-container h3:hover{
+    transition:  .5s cubic-bezier(.25,.01,.25,1) 0s;
+    background-color: #646cff;
+    border-radius: 0.5rem;
+ }
+.personal-info-form, .education-form, .experience-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 2px 2px 2px #26313A;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    background-color: #0d1b27;
+  
+}
+.personal-info-input, .education-input, .experience-input{
+    color: white;
+   
+  
+    align-items: center;
+  
+    
 }
 
-.education-form{
+.personal-info-input input, .education-input input, .experience-input input {
+    width: 300px;
+    
+    height: 44px;
+    background-color: #182633;
+    border-radius: .5rem;
+    padding: 0 1rem;
+    border: 2px solid transparent;
+    
+    transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+  }
+  
+  .personal-info-input label, .education-input label, .experience-input label {
     display: flex;
-    flex-direction: column;
-    width: 350px;
-}
-.experience-form{
+    justify-content: center;
+   
+    
+    margin: .3rem ;
+    
+    font-weight: bold;
+  
+    transition: color .3s cubic-bezier(.25,.01,.25,1) 0s;
+  }
+  
+ .job-description{
     display: flex;
-    flex-direction: column;
-    width: 350px;
-}
+    gap: .5rem;
+    margin: 0 .5rem .5rem .5rem;
+ }
+ .job-description button{
+   
+ }
+  
+ 
