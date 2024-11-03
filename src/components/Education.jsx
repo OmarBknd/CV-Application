@@ -9,38 +9,57 @@ export default function Education(
 
             
     return(
-        <div  className="educational-experience">
-            school:
+        <div  className="education-input">
+            <label htmlFor="">
+            School
+            </label>
             <input 
             type="text"
             name="school"
             value={education.school}
             onChange={onChange} />
-            degree:
+           
+           <label htmlFor="">
+           Degree
+           </label>
             <input 
             type="text"
             name="degree"
             value={education.degree}
             onChange={onChange} />
+           
+          <label htmlFor="">
+          Location
+          </label>
              <input 
-            type="text"
-            name="degree"
-            value={education.degree}
-            onChange={onChange} />
-            location
-            <input 
             type="text"
             name="location"
             value={education.location}
             onChange={onChange} />
-            end date
+        
+           <label htmlFor="">
+           Start date
+           </label>
+            <input 
+            type="text"
+            name="startDate"
+            value={education.location}
+            onChange={onChange} />
+           
+          <label htmlFor="">
+          End date
+          </label>
             <input 
             type="text"
             name="endDate"
             value={education.endDate}
             onChange={onChange} />
-            <button onClick={handleSave}>save</button>
+          
+           
+            <div>
+            <button onClick={handleSave}>Save</button>
             <button onClick={handleCancel}>Cancel</button>
+            </div>
             <button onClick={handleDelete}>Delete</button>
         </div>
     )

@@ -12,58 +12,81 @@ export default function Experience(
 
 
     return(
-        <div  className="educational-experience">
-            company:
+        <div  className="experience-input">
+            <label htmlFor="">
+            Company
+            </label>
             <input 
             type="text"
             name="company"
             value={experience.company}
             onChange={onChange} />
-            position:
+            
+            <label htmlFor="">
+            Position
+            </label>
             <input 
             type="text"
             name="position"
             value={experience.position}
             onChange={onChange} />
-            location:
-            <input 
+            
+           <label htmlFor="">
+           Location
+           </label>
+           <input 
             type="text"
             name="location"
             value={experience.location}
             onChange={onChange} />
-            start date
+           
+           <label htmlFor="">
+           Start date
+           </label>
             <input 
             type="text"
             name="startDate"
             value={experience.startDate}
             onChange={onChange} />
-            end date
+           
+            <label htmlFor="">
+            End date
+            </label>
             <input 
             type="text"
             name="endDate"
             value={experience.endDate}
             onChange={onChange} />
-            job description
+           
+           
+           <label  htmlFor="">
+           Job description
+           </label>
             {experience.jobDescription.map((task,i)=>(
-                <div key={i}>
-                    <textarea 
+                <div className="job-description" key={i}>
+                    <input 
                     type="text" 
                     value={task}
                     onChange={(e)=>updateJobDescription(e,i)}
                     >
-                    </textarea>
-                    <button onClick={()=>deleteJobDescription(i)}>Delete job description</button>
+                    </input>
+                    <button onClick={()=>deleteJobDescription(i)}>X</button>
                 </div>
             ))}
             <button onClick={addJobDescription}>add description</button>
-            <textarea 
+            <input 
             type="text"
             name="jobDescription"
             value={experience.jobDescription}
             onChange={onChange} />
+           
+            <div>
             <button onClick={handleSave}>save</button>
             <button onClick={handleCancel}>Cancel</button>
+            </div>
+            
             <button onClick={handleDelete}>Delete</button>
+            
         </div>
     )
    

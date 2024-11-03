@@ -152,7 +152,7 @@ function handleExperienceEdit(index){
   setExperience(experienceList[index]);
   setExperienceEditIndex(index);
 }
-  function handleSave() {
+  function handleEducationSave() {
     if (educationEditIndex !== null) {
       const updateEducationList = [...educationList];
       updateEducationList[educationEditIndex] = education;
@@ -161,12 +161,19 @@ function handleExperienceEdit(index){
     } else {
       setEducationList([...educationList, education]);
     }
+    setEducation({
+      school: "",
+      degree: "",
+      location:'',
+      startDate: "",
+      endDate: "",
+    })
   }
-  function handleCancel() {
+  function handleEducationCancel() {
     setEducationList(educationList.filter((_, i) => i !== ""));
     setEducationEditIndex(null);
   }
-  function handleDelete(index) {
+  function handleEducationDelete(index) {
     setEducationList(educationList.filter((_, i) => i !== index));
     setEducationEditIndex(null);
   }
@@ -175,17 +182,17 @@ function handleExperienceEdit(index){
     setEducationEditIndex(index);
   }
   return (
-    <>
+    
       <div className="container">
-        <div>
-        <div>
+        <div className="form-container">
+        <div className="personal-info-form">
         <h2>Personal information</h2>
         <PersonalInfo personalInfo={personalInfo} onChange={handlePersonalInfoChange} />
         
         </div>
-      <div>
+      
           
-          <div>
+          <div className="education-form">
           <h2>Education</h2>
             {educationEditIndex === null ? (
               <div>
@@ -195,7 +202,7 @@ function handleExperienceEdit(index){
                     name={index}
                     onClick={() => handleEdit(index)}
                   >
-                    <h2>{school.school}</h2>
+                    <h3>{school.school}</h3>
                   </div>
                 ))}
                 <button onClick={addNewEducation}>Add</button>
@@ -204,13 +211,13 @@ function handleExperienceEdit(index){
               <Education
                 education={education}
                 onChange={handleEducationChange}
-                handleSave={handleSave}
-                handleCancel={handleCancel}
-                handleDelete={() => handleDelete(educationEditIndex)}
+                handleSave={handleEducationSave}
+                handleCancel={handleEducationCancel}
+                handleDelete={() => handleEducationDelete(educationEditIndex)}
               />
             )}
           </div>
-          <div>
+          <div className="experience-form">
             <h2>Experience</h2>
             {experienceEditIndex === null ? ( 
               <div>
@@ -220,7 +227,7 @@ function handleExperienceEdit(index){
                     name={index}
                     onClick={() => handleExperienceEdit(index)}
                   >
-                    <h2>{company.company}</h2>
+                    <h3>{company.company}</h3>
                   </div>
                 ))}
                 <button onClick={addNewExperience}>Add</button>
@@ -238,7 +245,7 @@ function handleExperienceEdit(index){
               />
             )}
           </div>
-        </div>
+        
         </div>
         <div>
         <DisplayResume
@@ -248,7 +255,7 @@ function handleExperienceEdit(index){
         />
         </div>
       </div>
-    </>
+    
   );
 }
 
