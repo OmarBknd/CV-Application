@@ -1,4 +1,6 @@
-
+import deleteSvg from '../assets/deleteSvg.svg'
+import addSvg from '../assets/add-circle.svg'
+import { useState } from 'react'
 export default function Experience(
     {experience,
          onChange,
@@ -9,14 +11,27 @@ export default function Experience(
           updateJobDescription,
           deleteJobDescription
         }){
+const [showJobTasks, setShowJobTasks] = useState(false)
 
+function handleSubmit(e){
+    e.preventDefault()
+    handleSave()
+}
+function handleshowJob(){
+    setShowJobTasks(!showJobTasks)
+}
 
     return(
+        <form action=""
+         onSubmit={handleSubmit}
+         
+         >
         <div  className="experience-input">
             <label htmlFor="">
             Company
             </label>
             <input 
+            required
             type="text"
             name="company"
             value={experience.company}
@@ -26,6 +41,7 @@ export default function Experience(
             Position
             </label>
             <input 
+            required
             type="text"
             name="position"
             value={experience.position}
@@ -35,6 +51,7 @@ export default function Experience(
            Location
            </label>
            <input 
+            required
             type="text"
             name="location"
             value={experience.location}
@@ -44,6 +61,7 @@ export default function Experience(
            Start date
            </label>
             <input 
+            required
             type="text"
             name="startDate"
             value={experience.startDate}
@@ -53,41 +71,56 @@ export default function Experience(
             End date
             </label>
             <input 
+            required
             type="text"
             name="endDate"
             value={experience.endDate}
             onChange={onChange} />
            
            
-           <label  htmlFor="">
+           <label 
+           className='job-list-button'
+           onClick={handleshowJob} htmlFor="">
            Job description
            </label>
+           {showJobTasks && (
+            <div className='job-list'>
             {experience.jobDescription.map((task,i)=>(
-                <div className="job-description" key={i}>
+                <div className='job-description' key={i}>
                     <input 
                     type="text" 
                     value={task}
                     onChange={(e)=>updateJobDescription(e,i)}
                     >
                     </input>
-                    <button onClick={()=>deleteJobDescription(i)}>X</button>
+                    <button
+                    className='delete-job-button'
+                     onClick={()=>deleteJobDescription(i)}>
+                        {<img src={deleteSvg}/>}
+                        </button>
                 </div>
             ))}
-            <button onClick={addJobDescription}>add description</button>
-            <input 
-            type="text"
-            name="jobDescription"
-            value={experience.jobDescription}
-            onChange={onChange} />
+            <button 
+            className='add-job-button'
+             onClick={addJobDescription}>
+                {<img src={addSvg}/>}
+                </button>
+            </div>
+            
+        )}
+            
+            
+          
            
             <div>
-            <button onClick={handleSave}>save</button>
+            <button type='submit' >save</button>
             <button onClick={handleCancel}>Cancel</button>
             </div>
             
-            <button onClick={handleDelete}>Delete</button>
+            <button  onClick={handleDelete}>Delete</button>
             
         </div>
+        </form>
     )
    
     

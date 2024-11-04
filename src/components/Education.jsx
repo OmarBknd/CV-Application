@@ -7,13 +7,18 @@ export default function Education(
           handleDelete,
         }){
 
-            
+  function handleSubmit(e){
+    e.preventDefault()
+    handleSave()
+  }    
     return(
+      <form action="" onSubmit={handleSubmit}>
         <div  className="education-input">
             <label htmlFor="">
             School
             </label>
             <input 
+            required
             type="text"
             name="school"
             value={education.school}
@@ -23,6 +28,7 @@ export default function Education(
            Degree
            </label>
             <input 
+            required
             type="text"
             name="degree"
             value={education.degree}
@@ -32,6 +38,7 @@ export default function Education(
           Location
           </label>
              <input 
+             required
             type="text"
             name="location"
             value={education.location}
@@ -41,15 +48,17 @@ export default function Education(
            Start date
            </label>
             <input 
+            required
             type="text"
             name="startDate"
-            value={education.location}
+            value={education.startDate}
             onChange={onChange} />
            
           <label htmlFor="">
           End date
           </label>
             <input 
+            required
             type="text"
             name="endDate"
             value={education.endDate}
@@ -57,11 +66,12 @@ export default function Education(
           
            
             <div>
-            <button onClick={handleSave}>Save</button>
+            <button type="submit">Save</button>
             <button onClick={handleCancel}>Cancel</button>
             </div>
             <button onClick={handleDelete}>Delete</button>
         </div>
+        </form>
     )
    
     
