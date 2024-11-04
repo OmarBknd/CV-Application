@@ -95,6 +95,10 @@ hr {
   
     
 }
+.personal-info-input input:focus, .education-input input:focus, .experience-input input:focus{
+    border: 2px solid #646cff; 
+    outline: #646cff;
+}
 
 .personal-info-input input, .education-input input, .experience-input input {
     width: 300px;
@@ -121,12 +125,42 @@ hr {
   }
   
  .job-description{
-    display: flex;
-    gap: .5rem;
-    margin: 0 .5rem .5rem .5rem;
+    margin: 1rem;
  }
- .job-description button{
+ .delete-job-button{
+    position: absolute;
+   margin: 0 0 0 -1.5rem;
+ }
+ button.delete-job-button,
+ button.add-job-button {
+   
+   background: none;
+   border: none;
+   padding: 0;
+   cursor: pointer;
+   
+ 
    
  }
-  
  
+
+ 
+ button.delete-job-button:hover,
+ button.add-job-button:hover {
+   opacity: 0.8;
+ }
+
+
+ .job-list-button{
+ 
+  
+  border-radius: .5rem;
+  background-color:#646cff;
+ }
+.job-list-button:hover{
+  cursor: pointer;
+}
+
+
+
+
