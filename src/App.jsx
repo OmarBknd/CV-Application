@@ -4,6 +4,7 @@ import DisplayResume from "./components/DisplayResume";
 import PersonalInfo from "./components/PersonalInfo";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
+import Expertise from "./components/Expertise";
 import data from './components/data.json'
 function App() {
   const [personalInfo, setPersonalInfo] = useState(data.person);
@@ -24,6 +25,18 @@ function App() {
   const [experienceEditIndex, setExperienceEditIndex] = useState(null);
   const [educationList, setEducationList] = useState(data.education);
   const [educationEditIndex, setEducationEditIndex] = useState(null);
+  const [expertise, setExpertise] = useState({
+    skill:(data.expertise.skill),
+    interest:(data.expertise.interest)
+  })
+
+  function handleExpertiseChange(e){
+    const {name, value} = e.target;
+   setExpertise({
+    ...expertise,
+    [name]:value
+   })
+  }
   function handlePersonalInfoChange(e) {
     const { name, value } = e.target;
    
@@ -245,6 +258,13 @@ function handleExperienceEdit(index){
               />
             )}
           </div>
+          <div className="expertise-form">
+            <h2>Skills & Interests</h2>
+            <Expertise
+            expertise={expertise}
+            handleChange={handleExpertiseChange}
+            />
+          </div>
         
         </div>
         <div>
@@ -252,6 +272,7 @@ function handleExperienceEdit(index){
           personalInfo={personalInfo}
           educationList={educationList}
           experienceList={experienceList}
+          expertise={expertise}
         />
         </div>
       </div>

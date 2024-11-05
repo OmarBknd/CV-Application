@@ -2,6 +2,7 @@ export default function DisplayResume({
   educationList,
   experienceList,
   personalInfo,
+  expertise
 }) {
 
 
@@ -57,6 +58,12 @@ export default function DisplayResume({
               </div>
             </div>
           ))}
+        </div>
+        <div className="display-expertise">
+          <h3>SKILLS & INTERESTS</h3>
+          <hr />
+          {expertise.skill && <p><b>Skills:</b> {expertise.skill}</p>}
+          {expertise.interest && <p><b>Interests:</b> {expertise.interest}</p>}
         </div>
       </div>
     </>
