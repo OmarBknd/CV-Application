@@ -52,7 +52,11 @@
            "Improved customer satisfaction score by +24% (based on performance metrics)."
       ]
       }
-    ]
+    ],
+    "expertise":{
+      "skill":"React, Next.js, million.js, Svelte & Sveltekit, Tailwind CSS, Node.js, Deno, FastAPI, Flask.",
+      "interest":"Video Games, Anime, Reading Non-ﬁction, Classical and Original Soundtrack Music."
+    }
   }
 
 
