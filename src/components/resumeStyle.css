@@ -38,21 +38,29 @@ hr {
    
     
 }
- .display-experience div:nth-child(-n+2) , .display-education div:nth-child(-n+2) {
+ .display-experience div:nth-child(-n+2),
+  .display-education div:nth-child(-n+2) {
     display: flex;
     justify-content: space-between;
     align-items: center;
    margin: -1rem 0 -1.5rem 0;
  }
-.display-experience div:nth-child(2) , .display-education div:nth-child(2){
+.display-experience div:nth-child(2),
+ .display-education div:nth-child(2){
     font-style: italic;
     font-size: 0.9rem;
     margin: -2rem 0 -1.5rem 0
 }
- .display-education h3, .display-experience h3{ 
+ .display-education h3, 
+ .display-experience h3,
+  .display-expertise h3{ 
     display: flex;
  }
- 
+ .display-expertise{
+    padding: 0;
+   text-align: start;
+
+ }
 
 
  .display-cv{
@@ -62,6 +70,7 @@ hr {
      color: #ffffff;
      padding: 1rem 2rem 0 2rem;
      border-radius: .5rem;
+     overflow: auto;
     
  }
  .form-container{
@@ -69,6 +78,7 @@ hr {
     flex-direction: column;
     justify-content: space-around;
     width: 450px;
+    gap: 2rem;
     
     
  }
@@ -77,7 +87,10 @@ hr {
     background-color: #646cff;
     border-radius: 0.5rem;
  }
-.personal-info-form, .education-form, .experience-form {
+.personal-info-form,
+ .education-form,
+  .experience-form,
+   .expertise-form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -85,22 +98,29 @@ hr {
     border: 1px solid transparent;
     border-radius: 0.5rem;
     background-color: #0d1b27;
-  
+    overflow: auto;  
 }
-.personal-info-input, .education-input, .experience-input{
+.personal-info-input,
+ .education-input,
+  .experience-input,
+   .expertise-input{
     color: white;
-   
-  
     align-items: center;
   
     
 }
-.personal-info-input input:focus, .education-input input:focus, .experience-input input:focus{
+.personal-info-input input:focus,
+ .education-input input:focus,
+  .experience-input input:focus,
+   .expertise-input input:focus{
     border: 2px solid #646cff; 
     outline: #646cff;
 }
 
-.personal-info-input input, .education-input input, .experience-input input {
+.personal-info-input input,
+ .education-input input,
+  .experience-input input,
+   .expertise-input input {
     width: 300px;
     
     height: 44px;
@@ -112,7 +132,10 @@ hr {
     transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
   }
   
-  .personal-info-input label, .education-input label, .experience-input label {
+  .personal-info-input label,
+   .education-input label, 
+   .experience-input label,
+    .expertise-input label {
     display: flex;
     justify-content: center;
    
